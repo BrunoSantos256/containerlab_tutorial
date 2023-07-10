@@ -1,0 +1,18 @@
+name: bgpRR
+topology:
+  kinds:
+    srl:
+      image: ghcr.io/nokia/srlinux
+  nodes:
+    router1:
+      kind: srl
+    router2:
+      kind: srl
+    router3:
+      kind: srl
+    router4:
+      kind: srl
+  links:
+    - endpoints: ["router1:e1-1", "router3:e1-1"]
+    - endpoints: ["router2:e1-1", "router3:e1-2"]
+    - endpoints: ["router4:e1-1", "router2:e1-2"]

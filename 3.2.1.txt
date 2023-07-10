@@ -1,0 +1,14 @@
+name: intro 
+topology:
+  kinds:
+    srl:
+      image: ghcr.io/nokia/srlinux
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    router:
+      kind: srl
+    PC:
+      kind: linux
+  links:
+    - endpoints: ["router:e1-1", "PC:eth1"]

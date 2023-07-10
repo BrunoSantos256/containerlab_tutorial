@@ -1,0 +1,27 @@
+name: ospfredundant
+topology:
+  kinds:
+    srl:
+      image: ghcr.io/nokia/srlinux
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    router1:
+      kind: srl
+      type: ixrd2
+    router2:
+      kind: srl
+      type: ixrd2
+    router3:
+      kind: srl
+      type: ixrd3
+    client1:
+      kind: linux
+    client2:
+      kind: linux
+  links:
+    - endpoints: ["router1:e1-1", "router3:e1-1"]
+    - endpoints: ["router1:e1-3", "router2:e1-3"]
+    - endpoints: ["router2:e1-1", "router3:e1-2"]
+    - endpoints: ["client1:eth1", "router1:e1-2"]
+    - endpoints: ["client2:eth1", "router2:e1-2"]

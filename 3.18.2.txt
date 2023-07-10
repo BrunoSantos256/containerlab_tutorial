@@ -1,0 +1,8 @@
+name: exterior
+topology:
+  kinds:
+    srl:
+      image: ghcr.io/nokia/srlinux
+  nodes:
+    srl1:
+      kind: srl

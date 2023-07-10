@@ -1,0 +1,29 @@
+name: cenario-qos
+topology:
+  kinds:
+    srl:
+      image: ghcr.io/nokia/srlinux
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    leaf1:
+      kind: srl
+      type: ixrd2
+    leaf2:
+      kind: srl
+      type: ixrd2
+    spine:
+      kind: srl
+      type: ixrd3
+    client1:
+      kind: linux
+    client2:
+      kind: linux
+    client3:
+      kind: linux
+  links:
+    - endpoints: ["leaf1:e1-1", "spine:e1-1"]
+    - endpoints: ["leaf2:e1-1", "spine:e1-2"]
+    - endpoints: ["client1:eth1", "leaf1:e1-2"]
+    - endpoints: ["client2:eth1", "leaf1:e1-3"]
+    - endpoints: ["client3:eth1", "leaf2:e1-2"]
